@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>微博用户分析系统</title>
-
+    <link rel="icon" href="../static/img/favicon.ico">
     <link rel="stylesheet" href="../static/css/reset.css">
     <link rel="stylesheet" href="../static/css/index.css">
     <script src="../static/js/jquery-3.4.1.min.js"></script>
     <script src="../static/js/script.js"></script>
     <script src="../static/js/su.js"></script>
+    <script src="../static/js/main.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($){
         $('body').wpSuperSnow({
@@ -28,15 +29,6 @@
 <header class="header">
 <div class="header-inner body-width">
   <a href="#" class="logo"></a>
-  <!--<div class="category">-->
-	<!--<a href="#" class="category-link">分类</a>-->
-	<!--<i class="icon-arrow"></i>-->
-	<!--<div class="category-result"></div>-->
-	<!--&lt;!&ndash; 边框 &ndash;&gt;-->
-	<!--<span class="btn-border"></span>-->
-	<!--<span class="result-border"></span>-->
-	<!--<span class="neck-border"></span>-->
-  <!--</div>-->
   <div class="search">
 	<input type="text" class="search-text" placeholder="搜索用户">
 	<button class="search-btn"><i class="icon-search"></i></button>
@@ -49,8 +41,19 @@
         </li>
 	  <li>
 		<span class="line"></span>
-		<a href="#" class="dreamer">分 类</a>
-		<!--<i class="icon-text__pink icon-new">new</i>-->
+          <a href="#" class="dreamer" id="faction">娱 乐</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="#" class="dreamer" id="faction">音 乐</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="#" class="dreamer" id="faction">体 育</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="#" class="dreamer" id="faction">游 戏</a>
 	  </li>
 	  <li>
 		<span class="line"></span>
@@ -60,16 +63,16 @@
 		<span class="line"></span>
 		<a href="#">登 录</a>
 	  </li>
-	  <li>
-		<span class="line"></span>
-		<i class="icon-app"></i>
-		<a href="#" class="app">手机版</a>
-		<i class="icon-arrow"></i>
-		<div class="app-hover">
-		  <a href="#"></a>
-		  <p>扫一扫下载手机客户端</p>
-		</div>
-	  </li>
+{#	  <li>#}
+{#		<span class="line"></span>#}
+{#		<i class="icon-app"></i>#}
+{#		<a href="#" class="app">手机版</a>#}
+{#		<i class="icon-arrow"></i>#}
+{#		<div class="app-hover">#}
+{#		  <a href="#"></a>#}
+{#		  <p>扫一扫下载手机客户端</p>#}
+{#		</div>#}
+{#	  </li>#}
 	</ul>
   </nav>
 </div>
@@ -81,19 +84,19 @@
   <div class="banner clearfix">
 	<div class="slider" id="slider">
 	  <ul class="slider-wrapper">
-		<li class="item" data-title="这位上神！速速到我的本子里来">
+		<li class="item" data-title="往事终将成为一篇故事">
 		  <a href="#" class="pic"><img src="../static/img/cont/slider_img1.jpg" alt="#"></a>
 		</li>
-		<li class="item" data-title="想换上新衣去旅行！" data-author="by 占秋">
+		<li class="item" data-title="这一刻彼此握在手中" data-author="">
 		  <a href="#" class="pic"><img src="../static/img/cont/slider_img2.jpg" alt="#"></a>
 		</li>
-		<li class="item" data-title="你的书写工具需要一个庇护所" data-author="by Moollly">
+		<li class="item" data-title="60岁的时候还来看夕阳" data-author="">
 		  <a href="#" class="pic"><img src="../static/img/cont/slider_img3.jpg" alt="#"></a>
 		</li>
-		<li class="item" data-title="气温起伏，一件外套保护你" data-author="by 郑南音">
+		<li class="item" data-title="待到山花烂漫时" data-author="">
 		  <a href="#" class="pic"><img src="../static/img/cont/slider_img4.jpg" alt="#"></a>
 		</li>
-		<li class="item" data-title="鲜为人知的泰国小众小城——董里">
+		<li class="item" data-title="你是年少的欢喜">
 		  <a href="#" class="pic"><img src="../static/img/cont/slider_img5.jpg" alt="#"></a>
 		</li>
 	  </ul>
@@ -114,9 +117,9 @@
 	<div class="banner-info">
 	  <div class="news body-border">
 		<ul>
-		  <li class="title">社区热点</li>
+		  <li class="title">今日热点</li>
 		  <li class="link">
-			<a href="#">冬天</a>
+			<a href="#">天气转凉</a>
 			<span></span>
 			<a href="#">把生活过成一首诗</a>
 			<span></span>
@@ -145,115 +148,280 @@
   </div>
   <div class="main-cont main-album">
 	<div class="main-cont__title">
-	  <h3>专辑精选</h3>
-	  <a href="#" class="more">往期回顾 ></a>
+	  <h3 style="font-family: YouYuan;font-weight:bold">影视演员推荐</h3>
+	  <a href="#" class="more">查看更多 ></a>
 	</div>
 	<ul class="main-cont__list clearfix">
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img1.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/huge.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">你的书写工具需要一个庇护所</a>
-		  <p>68张图片 · 2255人收藏</p>
-		  <p>by <a href="#" class="author">Moollly</a></p>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">胡歌</a>
+            <p style="text-align: center">著名影视演员</p>
+		  <p style="text-align: center">6976万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img2.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/liushishi.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">你的书写工具需要一个庇护所</a>
-		  <p>68张图片 · 2255人收藏</p>
-		  <p>by <a href="#" class="author">Moollly</a></p>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">刘诗诗</a>
+		  <p style="text-align: center">著名影视演员</p>
+		  <p style="text-align: center">3265万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img3.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/yangmi.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">你的书写工具需要一个庇护所</a>
-		  <p>68张图片 · 2255人收藏</p>
-		  <p>by <a href="#" class="author">Moollly</a></p>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">杨幂</a>
+		  <p style="text-align: center">著名影视演员</p>
+		  <p style="text-align: center">1亿人关注</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img4.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/huojianhua.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">你的书写工具需要一个庇护所</a>
-		  <p>68张图片 · 2255人收藏</p>
-		  <p>by <a href="#" class="author">Moollly</a></p>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">霍建华</a>
+		  <p style="text-align: center">著名影视演员</p>
+		  <p style="text-align: center">129万人关注</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img5.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/zhaoliyin.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">你的书写工具需要一个庇护所</a>
-		  <p>68张图片 · 2255人收藏</p>
-		  <p>by <a href="#" class="author">Moollly</a></p>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">赵丽颖</a>
+		  <p style="text-align: center">著名影视演员</p>
+		  <p style="text-align: center">8565万人关注</p>
 		</div>
 	  </li>
 	</ul>
   </div>
-  <div class="main-cont main-recommend">
+
+
+    <div class="main-cont main-album">
 	<div class="main-cont__title">
-	  <h3>单品推荐</h3>
-	  <p class="list">
-		<em>良品购：</em>
-		<a href="#">全部</a>
-		<span>|</span>
-		<a href="#">上衣</a>
-		<span>|</span>
-		<a href="#">裙裤</a>
-		<span>|</span>
-		<a href="#">配饰</a>
-		<span>|</span>
-		<a href="#">鞋子</a>
-		<span>|</span>
-		<a href="#">包袋</a>
-		<span>|</span>
-		<a href="#">日杂</a>
-	  </p>
+	  <h3 style="font-family: YouYuan;font-weight:bold">歌手推荐</h3>
+	  <a href="#" class="more">查看更多 ></a>
 	</div>
 	<ul class="main-cont__list clearfix">
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img6.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/chenyixun.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">夹克</a>
-		  <span>18739人在逛</span>
-		  <a href="#" class="icon-text__pink purchase">良品购</a>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">陈奕迅</a>
+            <p style="text-align: center">香港知名歌手</p>
+		  <p style="text-align: center">2152万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img7.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/zhoujielun.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">夹克</a>
-		  <span>18739人在逛</span>
-		  <a href="#" class="icon-text__pink purchase">良品购</a>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">周杰伦</a>
+		  <p style="text-align: center">台湾著名歌手</p>
+		  <p style="text-align: center">259万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img8.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/xuezhiqian.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">夹克</a>
-		  <span>18739人在逛</span>
-		  <a href="#" class="icon-text__pink purchase">良品购</a>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">薛之谦</a>
+		  <p style="text-align: center">大陆知名歌手</p>
+		  <p style="text-align: center">5440万人关注</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img9.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/dengziqi.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">夹克</a>
-		  <span>18739人在逛</span>
-		  <a href="#" class="icon-text__pink purchase">良品购</a>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">邓紫棋</a>
+		  <p style="text-align: center">大陆知名歌手</p>
+		  <p style="text-align: center">3168万人关注</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic"><img src="../static/img/cont/main_img10.jpg" alt="#"></a>
+		<a href="#" class="pic"><img src="../static/img/cont/zhangliangyin.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title">夹克</a>
-		  <span>18739人在逛</span>
-		  <a href="#" class="icon-text__pink purchase">良品购</a>
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">张靓颖</a>
+		  <p style="text-align: center">大陆知名歌手</p>
+		  <p style="text-align: center">4258万人关注</p>
 		</div>
 	  </li>
 	</ul>
   </div>
+
+
+
+
+    <div class="main-cont main-album">
+	<div class="main-cont__title">
+	  <h3 style="font-family: YouYuan;font-weight:bold">体育推荐</h3>
+	  <a href="#" class="more">查看更多 ></a>
+	</div>
+	<ul class="main-cont__list clearfix">
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/zhangjike.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">张继科</a>
+            <p style="text-align: center">乒乓球奥运冠军</p>
+		  <p style="text-align: center">1028万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/sunyang.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">孙杨</a>
+		  <p style="text-align: center">游泳奥运冠军</p>
+		  <p style="text-align: center">3284万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/liuguoliang.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">刘国梁</a>
+		  <p style="text-align: center">中国第一位男子乒坛大满贯</p>
+		  <p style="text-align: center">317万人关注</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/lina.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">李娜</a>
+		  <p style="text-align: center">著名网球职业运动员</p>
+		  <p style="text-align: center">2255万人关注</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/lindan.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">林丹</a>
+		  <p style="text-align: center">国家羽毛球队员</p>
+		  <p style="text-align: center">426万人关注</p>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+
+    <div class="main-cont main-album">
+	<div class="main-cont__title">
+	  <h3 style="font-family: YouYuan;font-weight:bold">游戏推荐</h3>
+	  <a href="#" class="more">查看更多 ></a>
+	</div>
+	<ul class="main-cont__list clearfix">
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/lol.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">英雄联盟</a>
+            <p style="text-align: center">《英雄联盟》官方</p>
+		  <p style="text-align: center">1144万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/dnf.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">DNF</a>
+		  <p style="text-align: center">DNF 官方微博</p>
+		  <p style="text-align: center">165万人关注</p>
+{#		  <p>by <a href="#" class="author">Moollly</a></p>#}
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/juediqiusheng.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">绝地求生</a>
+		  <p style="text-align: center">《绝地求生》官方</p>
+		  <p style="text-align: center">111万人关注</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/dota2.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">DOTA2</a>
+		  <p style="text-align: center">DOTA2官方</p>
+		  <p style="text-align: center">105万人关注</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic"><img src="../static/img/cont/wangzherongyao.jpg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">王者荣耀</a>
+		  <p style="text-align: center">王者荣耀官方</p>
+		  <p style="text-align: center">728万人关注</p>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+
+
+{#  <div class="main-cont main-recommend">#}
+{#	<div class="main-cont__title">#}
+{#	  <h3>单品推荐</h3>#}
+{#	  <p class="list">#}
+{#		<em>良品购：</em>#}
+{#		<a href="#">全部</a>#}
+{#		<span>|</span>#}
+{#		<a href="#">上衣</a>#}
+{#		<span>|</span>#}
+{#		<a href="#">裙裤</a>#}
+{#		<span>|</span>#}
+{#		<a href="#">配饰</a>#}
+{#		<span>|</span>#}
+{#		<a href="#">鞋子</a>#}
+{#		<span>|</span>#}
+{#		<a href="#">包袋</a>#}
+{#		<span>|</span>#}
+{#		<a href="#">日杂</a>#}
+{#	  </p>#}
+{#	</div>#}
+{#	<ul class="main-cont__list clearfix">#}
+{#	  <li class="item">#}
+{#		<a href="#" class="pic"><img src="../static/img/cont/main_img6.jpg" alt="#"></a>#}
+{#		<div class="info">#}
+{#		  <a href="#" class="title">夹克</a>#}
+{#		  <span>18739人在逛</span>#}
+{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
+{#		</div>#}
+{#	  </li>#}
+{#	  <li class="item">#}
+{#		<a href="#" class="pic"><img src="../static/img/cont/main_img7.jpg" alt="#"></a>#}
+{#		<div class="info">#}
+{#		  <a href="#" class="title">夹克</a>#}
+{#		  <span>18739人在逛</span>#}
+{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
+{#		</div>#}
+{#	  </li>#}
+{#	  <li class="item">#}
+{#		<a href="#" class="pic"><img src="../static/img/cont/main_img8.jpg" alt="#"></a>#}
+{#		<div class="info">#}
+{#		  <a href="#" class="title">夹克</a>#}
+{#		  <span>18739人在逛</span>#}
+{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
+{#		</div>#}
+{#	  </li>#}
+{#	  <li class="item">#}
+{#		<a href="#" class="pic"><img src="../static/img/cont/main_img9.jpg" alt="#"></a>#}
+{#		<div class="info">#}
+{#		  <a href="#" class="title">夹克</a>#}
+{#		  <span>18739人在逛</span>#}
+{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
+{#		</div>#}
+{#	  </li>#}
+{#	  <li class="item">#}
+{#		<a href="#" class="pic"><img src="../static/img/cont/main_img10.jpg" alt="#"></a>#}
+{#		<div class="info">#}
+{#		  <a href="#" class="title">夹克</a>#}
+{#		  <span>18739人在逛</span>#}
+{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
+{#		</div>#}
+{#	  </li>#}
+{#	</ul>#}
+{#  </div>#}
   <div class="main-cont main-user">
 	<div class="main-cont__title">
 	  <h3>达人推荐</h3>
@@ -670,7 +838,7 @@
 	</div>
   </div>
   <div class="fopter-copyright">
-	<p>Copyright &copy; 2017.Company name All rights reserved.</p>
+	<p>Copyright &copy; 2019.Company name All rights reserved.</p>
   </div>
 </div>
 </footer>
