@@ -1,0 +1,45 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, em, small, strong, dl, dt, dd, ol, ul, li {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+}
+em, strong, i {
+  font-style: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+body {
+  line-height: 1;
+  font-size: 13px;
+  font-family: "Microsoft Yahei";
+  color: #444;
+  background-color: #fff;
+}
+ul, ol {
+  list-style: none;
+}
+a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #444;
+}
+input, button {
+  padding: 0;
+  outline: none;
+    font-size: 1.4em;
+  background: none;
+  font-family: YouYuan;
+  border: solid 1px #E5E5E5;
+  background: #FFFFFF;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px
+}
+img {
+  vertical-align: top;
+}
