@@ -1,0 +1,136 @@
+a{
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+span{
+    cursor: pointer
+}
+.main a:hover{
+    background-color: rgba(255, 76, 59, 0.59);
+}
+#head_img{
+    width: 120px;
+    height: 120px;
+    display:block;
+    margin: 0 auto;
+    border-radius: 100%;
+    box-shadow: 0 0 0 0.3em #ffffff;
+    transition: all 1.8s;
+    -webkit-transition: all 1.8s;
+    margin-bottom: 1.5em;
+}
+#head_one:before{
+    content: '';
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 175px;
+    width: 90%;
+    height: 1px;
+    z-index: 999;
+    background: black;
+}
+.the_person{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.name{
+    text-align: center;
+    font-size: 28px;
+    font-family: YouYuan;
+}
+.zhuye{
+    display: block;
+    text-align: left;
+    font-size: 28px;
+    font-family: YouYuan;
+}
+.sex{
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-family: YouYuan;
+}
+.person{
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-family: YouYuan;
+}
+.biaoqian{
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-family: YouYuan;
+}
+
+.hot{
+    clear:both;
+    margin: 0 auto;
+    width:80%;
+    height: 600px;
+}
+.paimin li{
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.word_cloud{
+    margin: 0;
+    /*width:50%;*/
+    height: 500px;
+}
+.bottom li{
+    display: inline-block;
+}
+.the_person a{
+    margin-right: 60px;
+    font-size: 48px;
+    border: solid 1px #c8cccf;
+    border-radius: 100%;
+    text-align: center;
+    width: 76px;
+    height: 76px;
+    /*color: rgb(255, 255, 255);*/
+    text-shadow: rgb(200, 204, 207) 1.25px 0px 0px, rgb(200, 204, 207) -1.25px 0px 0px, rgb(200, 204, 207) 0px 1.25px 0px, rgb(200, 204, 207) 0px -1.25px 0px;
+    line-height: 1.6em;
+}
+#sex_tip p{
+    width: 280px;
+    height: 80px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 80px;
+    font-family: YouYuan;
+    font-size: 22px;
+    background-color: #faf8ff;
+    border-radius: 18px;
+}
+
+#note_tip p{
+    width: 80%;
+    height: 80px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 80px;
+    font-family: YouYuan;
+    font-size: 22px;
+    background-color: #faf8ff;
+    border-radius: 18px;
+}
+#tags_tip p{
+    width: 80%;
+    height: 80px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 80px;
+    font-family: YouYuan;
+    font-size: 22px;
+    background-color: #fdf8ff;
+    border-radius: 18px;
+}
+#tags_tip span{
+    padding: 5px;
+    background-color: #bbbbbb66;
+    border-radius: 10px;
+}

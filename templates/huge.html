@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博用户分析系统</title>
+    <link rel="icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/son.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.css"> <!--字体-->
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/su.js"></script>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+        $('body').wpSuperSnow({
+        flakes: ['../static/img/007.png','../static/img/006.png','../static/img/004.png','../static/img/002.png','../static/img/001.png','../static/img/003.png','../static/img/002.png','../static/img/001.png'],
+        totalFlakes: '150',
+        zIndex: '999999',
+        maxSize: '30',
+        maxDuration: '20',
+        useFlakeTrans: false
+        });
+        });
+    </script>
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner body-width">
+  <a href="#" class="logo"></a>
+  <div class="search">
+	<input type="text" class="search-text" placeholder="搜索用户">
+	<button class="search-btn"><i class="icon-search"></i></button>
+  </div>
+  <nav class="header-nav">
+	<ul>
+        <li>
+            <a href="/" class="dreamer">首 页</a>
+		<!--<i class="icon-text__pink icon-new">new</i>-->
+        </li>
+	   <li>
+		<span class="line"></span>
+          <a href="{%  url 'entertainment' %}" class="dreamer" id="faction">娱 乐</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="{%  url 'music' %}" class="dreamer" id="faction">音 乐</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="{%  url 'sport' %}" class="dreamer" id="faction">体 育</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="{%  url 'game' %}" class="dreamer" id="faction">游 戏</a>
+	  </li>
+	  <li>
+		<span class="line"></span>
+		<a href="#" class="dreamer">收 藏</a>
+	  </li>
+	  <li>
+		<span class="line"></span>
+		<a href="#">登 录</a>
+	  </li>
+	</ul>
+  </nav>
+</div>
+<div class="header-shadow"></div>
+</header>
+
+<div class="main">
+    <div class="main-inner body-width">
+        <div id="head_one" style="width: 100%">
+            <img id="head_img" src="https://tva3.sinaimg.cn/crop.0.0.180.180.180/68160971jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1570427992&ssig=t9MiQMVsie">
+        </div>
+        <div>
+            <p class="name">微博昵称：{{ data.name }}</p>
+
+        </div>
+        <div class="the_person">
+            <div style="margin: 0 154px 60px 276px;">
+            <a class="fa fa-home" aria-hidden="true" title="微博主页"></a>
+{#            <a class="fa fa-female" aria-hidden="true" title="性别"></a>#}
+
+            <a id="sex" class="fa fa-male" aria-hidden="true" title="性别"></a>
+            <a id="note" class="fa fa-pencil-square-o" aria-hidden="true" title="个人说明"></a>
+            <a id="tag" class="fa fa-tags" aria-hidden="true" title="标签"></a>
+            <a id="like" class="fa fa-star" aria-hidden="true" title="收藏"></a>
+            </div>
+            <div id="sex_tip" style="margin-bottom: 30px;">
+                <p>该 博 主 是 个 妹 子</p>
+            </div>
+            <div id="note_tip" style="margin-bottom: 30px;">
+                <p>个人说明:</p>
+            </div>
+            <div id="tags_tip" style="margin-bottom: 30px;">
+                <p>标签:<span>活泼</span>&nbsp<span></span>&nbsp<span></span></p>
+            </div>
+        </div>
+        <div class="faction" style="width: 600px;height:400px;float: left">
+        <script type="text/javascript">
+        var myChart = echarts.init(document.querySelector('.faction'));
+        var content = {{ data|safe }};
+        console.log(content.name,'name');
+            myChart.setOption({
+                    title : {
+        text: '原创微博分类明细',
+        {#subtext: '纯属虚构',#}
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+    },
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1548, name:'搜索引擎'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+            });
+
+        // 使用刚指定的配置项和数据显示图表。
+    </script>
+        </div>
+        <div class="list" style="float: right;width: 500px;height: 400px">
+            <div style="font-size: 19px;text-align: center;margin-bottom: 9px;"><p>热度排名前十微博</p></div>
+            <ul class="paimin" style="margin: 0;padding: 0;">
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">1</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">2</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">3</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">4</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">5</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">6</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">7</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">8</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">9</span><a style="color: #22b4f6">你好</a></li>
+            </ul>
+        </div>
+        <div class="hot" style="margin-bottom: 50px;">
+            <script type="text/javascript">
+                var myChart_2 = echarts.init(document.querySelector('.hot'));
+                myChart_2.setOption(
+                option = {
+                    color: ['#3398DB'],
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'直接访问',
+                            type:'bar',
+                            barWidth: '60%',
+                            data:[10, 52, 200, 334, 390, 330, 220]
+                        }
+                    ]
+                });
+            </script>
+        </div>
+        <div class="word_cloud">
+            <p style="font-size: 30px;">最近微博话题</p>
+            <div style="margin: 0 auto;float: left">
+                <img src="../static/img/未标题-1.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+<div class="footer-container">
+  <div class="footer-link">
+	<div class="footer-link__item">
+	  <h4 class="footer-title">关于我们</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">关于我们</a></li>
+		<li class="item"><a href="#">加入我们</a></li>
+		<li class="item"><a href="#">标签集</a></li>
+		<li class="item"><a href="#">商务合作</a></li>
+		<li class="item"><a href="#">免责声明</a></li>
+	  </ul>
+	</div>
+	<div class="footer-link__item">
+	  <h4 class="footer-title">手机应用</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">敬请期待</a></li>
+	  </ul>
+	</div>
+	<div class="footer-link__item">
+	  <div class="footer-orcode"><img src="../static/img/app_qrcode.png" alt="#"></div>
+	  <div class="orcode-text">
+		<p>扫描二维码</p>
+		<p>下载tang手机客户端</p>
+	  </div>
+	</div>
+	<div class="footer-link__item">
+	  <h4 class="footer-title">关注我们</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">CSDN</a></li>
+	  </ul>
+	</div>
+	<div class="footer-link__item">
+	  <h4 class="footer-title">友情链接</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">Github地址</a></li>
+		<li class="item"><a href="#">QQ联系</a></li>
+		<li class="item"><a href="#">微信联系</a></li>
+		<li class="item"><a href="#">邮件联系</a></li>
+
+	  </ul>
+	</div>
+  </div>
+  <div class="fopter-copyright">
+	<p>Copyright &copy; 2019.Company name All rights reserved.</p>
+  </div>
+</div>
+</footer>
+<div class="liker">
+	<canvas class="hearts-canvas"></canvas>
+	<button class="btn">
+		<svg width="24" height="24" viewBox="0 0 24 24">
+			<path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>
+		</svg>
+	</button>
+	<span>为他点赞</span>
+    <script type="text/javascript">
+        class HeartsFlow {
+  constructor(data) {
+    this.el = document.querySelector(data.canvasEl);
+    this.w = 200;
+    this.h = 400;
+    this.ctx = this.el.getContext('2d');
+    this.colors = [
+    '255, 137, 164', //'#FF89A4',
+    '239, 121, 138', //'#EF798A',
+    '255, 77, 128', //'#FF4D80',
+    '249, 42, 130' //'#F92A82'
+    ];
+    this.heartsAmount = data.amount;
+    this.heartsList = [];
+    this.isAnimate = false;
+    this.raf = null;
+    this.animate = this.animate.bind(this);
+    this.paintHeart = this.paintHeart.bind(this);
+    this.stopAnimation = this.stopAnimation.bind(this);
+    this.init();
+  }
+  getRandomColor() {
+    return this.colors[Math.floor(Math.random() * this.colors.length)];
+  }
+  getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  setHeartsList() {
+    let arr = [];
+    for (let i = 0; i < this.heartsAmount; i++) {
+      let currentSize = this.getRandom(10, 15);
+      let dt = {
+        x: this.w / 2,
+        y: this.h,
+        bx: this.w / 2,
+        by: this.h,
+        pos: this.h,
+        _osp: this.getRandom(200, 400) / 100,
+        osp: this.getRandom(11, 12) / 10,
+        vsp: this.getRandom(currentSize, currentSize + i * 2) / 1000,
+        size: currentSize,
+        color: this.getRandomColor(),
+        alfa: 1 };
+
+      arr.push(dt);
+    }
+    this.heartsList = [...this.heartsList, ...arr];
+  }
+  getCoordinates({ x, y, size, color, bx, by, _osp, osp, vsp, pos, alfa }) {
+    return {
+      xst: x,
+      yst: y + size / 2,
+      x0: x - size / 1.4,
+      y0: y + size / 4,
+      x1: x - size / 1.3,
+      y1: y - size / 1.3,
+      _x0: x + size / 1.4,
+      _y0: y + size / 4,
+      _x1: x + size / 1.3,
+      _y1: y - size / 1.3,
+      xfn: x,
+      yfn: y - size / 3,
+      bx: bx,
+      by: by,
+      _osp: _osp,
+      osp: osp,
+      vsp: vsp,
+      pos: pos,
+      alfa: alfa,
+      size: size,
+      color: color };
+
+  }
+  paintHeart({ xst, yst, x0, y0, _x0, _y0, x1, y1, _x1, _y1, xfn, yfn, color, alfa }) {
+    this.ctx.globalCompositeOperation = "lighter";
+    this.ctx.beginPath();
+    this.ctx.moveTo(xst, yst);
+    this.ctx.bezierCurveTo(x0, y0, x1, y1, xfn, yfn);
+    this.ctx.moveTo(xst, yst);
+    this.ctx.bezierCurveTo(_x0, _y0, _x1, _y1, xfn, yfn);
+    this.ctx.fillStyle = `rgba(${color}, ${alfa})`;
+    this.ctx.strokeStyle = `rgba(${color}, ${alfa})`;
+    this.ctx.fill();
+    this.ctx.stroke();
+    this.ctx.closePath();
+  }
+  mutateData() {
+    this.heartsList = this.heartsList.map(item => {
+      let pos = item.pos - 0.05;
+      let x = item.x + Math.sin(pos * item._osp) * ((pos - item.by) / item.osp);
+      let y = pos + (pos - item.by) / item.vsp * 1.6;
+      let alfa = this.normalize0between1(0, this.h, y).toFixed(1);
+      return {
+        ...item, x: x, y: y, pos: pos, alfa: alfa };
+
+    });
+    this.heartsList = this.heartsList.filter(item => item.y > 0);
+  }
+  normalize0between1(min, max, value) {
+    return (value - min) / (max - min);
+  }
+  setCanvas() {
+    this.el.width = this.w;
+    this.el.height = this.h;
+  }
+  startAnimation() {
+    if (!this.isAnimate) {
+      this.isAnimate = true;
+      console.log('start animation');
+      this.setHeartsList();
+      this.animate();
+    } else {
+      this.setHeartsList();
+    }
+  }
+  stopAnimation() {
+    this.isAnimate = false;
+    console.log('stop animation');
+    cancelAnimationFrame(this.raf);
+  }
+  animate() {
+
+    this.ctx.clearRect(0, 0, this.w, this.h);
+
+    if (this.isAnimate) {
+      for (let i = 0, len = this.heartsList.length; i < len; i++) {
+        let hrt = this.getCoordinates(this.heartsList[i]);
+        this.paintHeart(hrt);
+      }
+      this.mutateData();
+    }
+
+    this.raf = requestAnimationFrame(this.animate);
+
+    if (this.heartsList.length === 0 && this.isAnimate) {
+      this.stopAnimation();
+    }
+  }
+  init() {
+    this.setCanvas();
+    this.setHeartsList();
+    this.animate();
+  }}
+
+
+let ht = new HeartsFlow({
+  canvasEl: '.hearts-canvas',
+  amount: 20 });
+
+
+let btn = document.querySelector('.btn');
+
+btn.addEventListener('click', function () {
+  ht.startAnimation();
+});
+    </script>
+</div>
+</body>
+</html>

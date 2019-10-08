@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博用户分析系统</title>
+    <link rel="icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/su.js"></script>
+    <script src="../static/js/main.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+        $('body').wpSuperSnow({
+        flakes: ['../static/img/007.png','../static/img/006.png','../static/img/004.png','../static/img/002.png','../static/img/001.png','../static/img/003.png','../static/img/002.png','../static/img/001.png'],
+        totalFlakes: '150',
+        zIndex: '999999',
+        maxSize: '30',
+        maxDuration: '20',
+        useFlakeTrans: false
+        });
+        });
+    </script>
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner body-width">
+  <a href="#" class="logo"></a>
+  <div class="search">
+	<input type="text" class="search-text" placeholder="搜索用户">
+	<button class="search-btn"><i class="icon-search"></i></button>
+  </div>
+  <nav class="header-nav">
+	<ul>
+        <li>
+            <a href="/" class="dreamer">首 页</a>
+		<!--<i class="icon-text__pink icon-new">new</i>-->
+        </li>
+	   <li>
+		<span class="line"></span>
+          <a href="{%  url 'entertainment' %}" class="dreamer" id="faction">娱 乐</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="{%  url 'music' %}" class="dreamer" id="faction">音 乐</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="{%  url 'sport' %}" class="dreamer" id="faction">体 育</a>
+	  </li>
+        <li>
+		<span class="line"></span>
+          <a href="{%  url 'game' %}" class="dreamer" id="faction">游 戏</a>
+	  </li>
+	  <li>
+		<span class="line"></span>
+		<a href="#" class="dreamer">收 藏</a>
+	  </li>
+	  <li>
+		<span class="line"></span>
+		<a href="#">登 录</a>
+	  </li>
+{#	  <li>#}
+{#		<span class="line"></span>#}
+{#		<i class="icon-app"></i>#}
+{#		<a href="#" class="app">手机版</a>#}
+{#		<i class="icon-arrow"></i>#}
+{#		<div class="app-hover">#}
+{#		  <a href="#"></a>#}
+{#		  <p>扫一扫下载手机客户端</p>#}
+{#		</div>#}
+{#	  </li>#}
+	</ul>
+  </nav>
+</div>
+<div class="header-shadow"></div>
+</header>
+
+<div class="main">
+<div class="main-inner body-width">
+
+
+  <div class="main-cont main-user">
+    <div style="margin-bottom: 68px;">
+        <p style="font-size: 34px;text-align: center">影视博主</p>
+    </div>
+	<ul class="main-cont__list clearfix">
+	  <li class="item">
+		<a class="pic" style=" background: url(../static/img/cont/user_img1.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img1.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/user_img2.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/user_img3.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/user_img4.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/user_img5.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+
+  <div class="main-cont main-user">
+	<div class="main-cont__title">
+	</div>
+      <ul class="main-cont__list clearfix">
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/6.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="https://tva3.sinaimg.cn/crop.0.0.180.180.180/68160971jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1570427992&ssig=t9MiQMVsie" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/7.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/8.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/9.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/10.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+      <div class="main-cont main-user">
+	<div class="main-cont__title">
+	</div>
+      <ul class="main-cont__list clearfix">
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/11.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img1.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/12.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/13.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/14.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/15.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+      <div class="main-cont main-user">
+	<div class="main-cont__title">
+	</div>
+      <ul class="main-cont__list clearfix">
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/16.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img1.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/17.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/18.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/19.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a href="#" class="pic" style=" background: url(../static/img/cont/20.jpg) no-repeat; background-size: cover; "></a>
+		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
+		<div class="info">
+		  <a href="#" class="info-title">虽虽酱</a>
+		  <p><i class="icon-star"></i>9645</p>
+		  <p>擅长领域: <b>Q版</b></p>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+</div>
+<a href="#" id="readMore">浏览更多 ></a>
+</div>
+
+<footer class="footer">
+<div class="footer-container">
+  <div class="footer-link">
+	<div class="footer-link__item">
+	  <h4 class="footer-title">关于我们</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">关于我们</a></li>
+		<li class="item"><a href="#">加入我们</a></li>
+		<li class="item"><a href="#">标签集</a></li>
+		<li class="item"><a href="#">商务合作</a></li>
+		<li class="item"><a href="#">免责声明</a></li>
+	  </ul>
+	</div>
+	<div class="footer-link__item">
+	  <h4 class="footer-title">手机应用</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">敬请期待</a></li>
+	  </ul>
+	</div>
+	<div class="footer-link__item">
+	  <div class="footer-orcode"><img src="../static/img/app_qrcode.png" alt="#"></div>
+	  <div class="orcode-text">
+		<p>扫描二维码</p>
+		<p>下载tang手机客户端</p>
+	  </div>
+	</div>
+	<div class="footer-link__item">
+	  <h4 class="footer-title">关注我们</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">CSDN</a></li>
+	  </ul>
+	</div>
+	<div class="footer-link__item">
+	  <h4 class="footer-title">友情链接</h4>
+	  <ul class="footer-list">
+		<li class="item"><a href="#">Github地址</a></li>
+		<li class="item"><a href="#">QQ联系</a></li>
+		<li class="item"><a href="#">微信联系</a></li>
+		<li class="item"><a href="#">邮件联系</a></li>
+
+	  </ul>
+	</div>
+  </div>
+  <div class="fopter-copyright">
+	<p>Copyright &copy; 2019.Company name All rights reserved.</p>
+  </div>
+</div>
+</footer>
+
+</body>
+</html>

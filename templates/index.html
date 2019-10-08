@@ -36,24 +36,24 @@
   <nav class="header-nav">
 	<ul>
         <li>
-            <a href="#" class="dreamer">首 页</a>
+            <a href="/" class="dreamer">首 页</a>
 		<!--<i class="icon-text__pink icon-new">new</i>-->
         </li>
 	  <li>
 		<span class="line"></span>
-          <a href="#" class="dreamer" id="faction">娱 乐</a>
+          <a href="/entertainment" class="dreamer" id="faction">娱 乐</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="#" class="dreamer" id="faction">音 乐</a>
+          <a href="/music" class="dreamer" id="faction">音 乐</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="#" class="dreamer" id="faction">体 育</a>
+          <a href="/sport" class="dreamer" id="faction">体 育</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="#" class="dreamer" id="faction">游 戏</a>
+          <a href="/game" class="dreamer" id="faction">游 戏</a>
 	  </li>
 	  <li>
 		<span class="line"></span>
@@ -155,7 +155,7 @@
 	  <li class="item">
 		<a href="#" class="pic"><img src="../static/img/cont/huge.jpg" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">胡歌</a>
+		  <a href="{% url 'huge' %}" class="title" style="text-align: center;font-size: 18px;text-decoration: none;">胡歌</a>
             <p style="text-align: center">著名影视演员</p>
 		  <p style="text-align: center">6976万人关注</p>
 {#		  <p>by <a href="#" class="author">Moollly</a></p>#}
@@ -356,72 +356,6 @@
 	</ul>
   </div>
 
-
-
-
-{#  <div class="main-cont main-recommend">#}
-{#	<div class="main-cont__title">#}
-{#	  <h3>单品推荐</h3>#}
-{#	  <p class="list">#}
-{#		<em>良品购：</em>#}
-{#		<a href="#">全部</a>#}
-{#		<span>|</span>#}
-{#		<a href="#">上衣</a>#}
-{#		<span>|</span>#}
-{#		<a href="#">裙裤</a>#}
-{#		<span>|</span>#}
-{#		<a href="#">配饰</a>#}
-{#		<span>|</span>#}
-{#		<a href="#">鞋子</a>#}
-{#		<span>|</span>#}
-{#		<a href="#">包袋</a>#}
-{#		<span>|</span>#}
-{#		<a href="#">日杂</a>#}
-{#	  </p>#}
-{#	</div>#}
-{#	<ul class="main-cont__list clearfix">#}
-{#	  <li class="item">#}
-{#		<a href="#" class="pic"><img src="../static/img/cont/main_img6.jpg" alt="#"></a>#}
-{#		<div class="info">#}
-{#		  <a href="#" class="title">夹克</a>#}
-{#		  <span>18739人在逛</span>#}
-{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
-{#		</div>#}
-{#	  </li>#}
-{#	  <li class="item">#}
-{#		<a href="#" class="pic"><img src="../static/img/cont/main_img7.jpg" alt="#"></a>#}
-{#		<div class="info">#}
-{#		  <a href="#" class="title">夹克</a>#}
-{#		  <span>18739人在逛</span>#}
-{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
-{#		</div>#}
-{#	  </li>#}
-{#	  <li class="item">#}
-{#		<a href="#" class="pic"><img src="../static/img/cont/main_img8.jpg" alt="#"></a>#}
-{#		<div class="info">#}
-{#		  <a href="#" class="title">夹克</a>#}
-{#		  <span>18739人在逛</span>#}
-{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
-{#		</div>#}
-{#	  </li>#}
-{#	  <li class="item">#}
-{#		<a href="#" class="pic"><img src="../static/img/cont/main_img9.jpg" alt="#"></a>#}
-{#		<div class="info">#}
-{#		  <a href="#" class="title">夹克</a>#}
-{#		  <span>18739人在逛</span>#}
-{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
-{#		</div>#}
-{#	  </li>#}
-{#	  <li class="item">#}
-{#		<a href="#" class="pic"><img src="../static/img/cont/main_img10.jpg" alt="#"></a>#}
-{#		<div class="info">#}
-{#		  <a href="#" class="title">夹克</a>#}
-{#		  <span>18739人在逛</span>#}
-{#		  <a href="#" class="icon-text__pink purchase">良品购</a>#}
-{#		</div>#}
-{#	  </li>#}
-{#	</ul>#}
-{#  </div>#}
   <div class="main-cont main-user">
 	<div class="main-cont__title">
 	  <h3>达人推荐</h3>
@@ -793,9 +727,7 @@
 	  <h4 class="footer-title">关于我们</h4>
 	  <ul class="footer-list">
 		<li class="item"><a href="#">关于我们</a></li>
-		<li class="item"><a href="#">帮助中心</a></li>
 		<li class="item"><a href="#">加入我们</a></li>
-		<li class="item"><a href="#">联系我们</a></li>
 		<li class="item"><a href="#">标签集</a></li>
 		<li class="item"><a href="#">商务合作</a></li>
 		<li class="item"><a href="#">免责声明</a></li>
@@ -804,9 +736,7 @@
 	<div class="footer-link__item">
 	  <h4 class="footer-title">手机应用</h4>
 	  <ul class="footer-list">
-		<li class="item"><a href="#">关于我们</a></li>
-		<li class="item"><a href="#">帮助中心</a></li>
-		<li class="item"><a href="#">加入我们</a></li>
+		<li class="item"><a href="#">敬请期待</a></li>
 	  </ul>
 	</div>
 	<div class="footer-link__item">
@@ -819,21 +749,17 @@
 	<div class="footer-link__item">
 	  <h4 class="footer-title">关注我们</h4>
 	  <ul class="footer-list">
-		<li class="item"><a href="#">关于我们</a></li>
-		<li class="item"><a href="#">帮助中心</a></li>
+		<li class="item"><a href="#">CSDN</a></li>
 	  </ul>
 	</div>
 	<div class="footer-link__item">
 	  <h4 class="footer-title">友情链接</h4>
 	  <ul class="footer-list">
-		<li class="item"><a href="#">关于我们</a></li>
-		<li class="item"><a href="#">帮助中心</a></li>
-		<li class="item"><a href="#">关于我们</a></li>
-		<li class="item"><a href="#">帮助中心</a></li>
-		<li class="item"><a href="#">关于我们</a></li>
-		<li class="item"><a href="#">帮助中心</a></li>
-		<li class="item"><a href="#">关于我们</a></li>
-		<li class="item"><a href="#">帮助中心</a></li>
+		<li class="item"><a href="#">Github地址</a></li>
+		<li class="item"><a href="#">QQ联系</a></li>
+		<li class="item"><a href="#">微信联系</a></li>
+		<li class="item"><a href="#">邮件联系</a></li>
+
 	  </ul>
 	</div>
   </div>
