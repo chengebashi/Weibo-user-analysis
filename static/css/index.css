@@ -460,6 +460,7 @@ body {
 }
 .main-cont__list {
   margin-right: -20px;
+    margin-top:10px;
 }
 .main-cont__list .item {
   position: relative;
@@ -852,4 +853,8 @@ body {
 }
 #faction{
     cursor:pointer;
+}
+
+.more{
+  cursor:pointer;
 }
