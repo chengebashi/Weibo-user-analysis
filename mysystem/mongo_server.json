@@ -1,0 +1,9 @@
+
+
+{
+  "server_ip":"47.100.253.248",
+  "server_port":"27017",
+  "mongo_name":"test",
+  "mongo_user":"chenge",
+  "mongo_passwd":"chenge"
+}

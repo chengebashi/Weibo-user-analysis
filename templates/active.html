@@ -7,6 +7,7 @@
     <link rel="icon" href="../static/img/favicon.ico">
     <link rel="stylesheet" href="../static/css/reset.css">
     <link rel="stylesheet" href="../static/css/index.css">
+        <link rel="stylesheet" href="../static/css/font-awesome.css"> <!--字体-->
     <script src="../static/js/jquery-3.4.1.min.js"></script>
     <script src="../static/js/script.js"></script>
     <script src="../static/js/su.js"></script>
@@ -28,10 +29,13 @@
 
 <header class="header">
 <div class="header-inner body-width">
-  <a href="#" class="logo"></a>
+  <a class="logo"></a>
   <div class="search">
-	<input type="text" class="search-text" placeholder="搜索用户">
-	<button class="search-btn"><i class="icon-search"></i></button>
+      <form action="/user_search" method="post">
+          {% csrf_token %}
+	<input type="text" class="search-text" placeholder="搜索用户" name="search">
+	<button type="submit" class="search-btn"><i class="icon-search"></i></button>
+      </form>
   </div>
   <nav class="header-nav">
 	<ul>
@@ -41,42 +45,42 @@
         </li>
 	  <li>
 		<span class="line"></span>
-          <a href="{%  url 'entertainment' %}" class="dreamer" id="faction">娱 乐</a>
+          <a href="/entertainment" class="dreamer" id="faction">娱 乐</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'music' %}" class="dreamer" id="faction">音 乐</a>
+          <a href="/music" class="dreamer" id="faction">音 乐</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'sport' %}" class="dreamer" id="faction">体 育</a>
+          <a href="/sport" class="dreamer" id="faction">体 育</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'game' %}" class="dreamer" id="faction">游 戏</a>
+          <a href="/game" class="dreamer" id="faction">游 戏</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'active' %}" class="dreamer" id="faction">达 人</a>
+          <a href="/active" class="dreamer" id="faction">达 人</a>
 	  </li>
 	  <li>
 		<span class="line"></span>
-		<a href="#" class="dreamer">收 藏</a>
+		<a href="/self_like/{{ content.login_id }}" class="dreamer">收 藏</a>
 	  </li>
 	  <li>
-		<span class="line"></span>
-		<a href="#">登 录</a>
-	  </li>
-{#	  <li>#}
-{#		<span class="line"></span>#}
-{#		<i class="icon-app"></i>#}
-{#		<a href="#" class="app">手机版</a>#}
-{#		<i class="icon-arrow"></i>#}
-{#		<div class="app-hover">#}
-{#		  <a href="#"></a>#}
-{#		  <p>扫一扫下载手机客户端</p>#}
-{#		</div>#}
-{#	  </li>#}
+          {% if content.head_img %}
+          <div class="text_top" style="display: flex;">
+                <span class="line"></span>
+                  <span class="the_qq_head">
+                <img style="border-radius: 50%; height: 40px;width: 40px" src="{{ content.head_img }}">
+                </span>
+                <span class="the_qq_name">{{ content.nick_name }}</span>
+                <span style="display: inline-block" class="logout"><a class="fa fa-sign-out" aria-hidden="true"></a></span>
+              </div>
+          {% else %}
+                <span style="margin-left: 50px;" class="qq"><img id="qq_login" style="width: 40px;height: 40px;position: absolute;top: -4px;" src="../static/img/icon_QQ.png"></span>
+          {% endif %}
+      </li>
 	</ul>
   </nav>
 </div>
@@ -94,47 +98,47 @@
 	<ul class="main-cont__list clearfix">
 	  <li class="item">
 		<a class="pic" style=" background: url(../static/img/cont/61.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img1.jpeg" alt="#"></a>
+		<a href="/base/{{ content.1.uid }}" class="headImg"><img src="{{ content.1.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.1.uid }}" class="info-title">{{ content.1.微博昵称 }}</a>
+		  <p><i class="icon-star"></i>{{ content.1.粉丝数 }}</p>
+		  <p class="text">{{ content.1.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/62.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/62.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.2.uid }}" class="headImg"><img src="{{ content.2.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.2.uid }}" class="info-title">{{ content.2.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.2.粉丝数 }}</p>
+		  <p class="text">{{ content.2.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/63.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/63.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.3.uid }}" class="headImg"><img src="{{ content.3.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.3.uid }}" class="info-title">{{ content.3.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.3.粉丝数 }}</p>
+		  <p class="text">{{ content.3.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/64.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/64.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.4.uid }}" class="headImg"><img src="{{ content.4.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.4.uid }}" class="info-title">{{ content.4.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.4.粉丝数 }}</p>
+		  <p class="text">{{ content.4.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/65.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/65.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.5.uid }}" class="headImg"><img src="{{ content.5.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.5.uid }}" class="info-title">{{ content.5.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.5.粉丝数 }}</p>
+		  <p class="text">{{ content.5.微博说明 }}</p>
 		</div>
 	  </li>
 	</ul>
@@ -147,101 +151,48 @@
 	</div>
       <ul class="main-cont__list clearfix">
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/66.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="https://tva3.sinaimg.cn/crop.0.0.180.180.180/68160971jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1570427992&ssig=t9MiQMVsie" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/66.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.6.uid }}" class="headImg"><img src="{{ content.6.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.6.uid }}" class="info-title">{{ content.6.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.6.粉丝数 }}</p>
+		  <p class="text">{{ content.6.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/67.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/67.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.7.uid }}" class="headImg"><img src="{{ content.7.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.7.uid }}" class="info-title">{{ content.7.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.7.粉丝数 }}</p>
+		  <p class="text">{{ content.7.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/68.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/68.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.8.uid }}" class="headImg"><img src="{{ content.8.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.8.uid }}" class="info-title">{{ content.8.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.8.粉丝数 }}</p>
+		  <p class="text">{{ content.8.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/69.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/69.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.9.uid }}" class="headImg"><img src="{{ content.9.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.9.uid }}" class="info-title">{{ content.9.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.9.粉丝数 }}</p>
+		  <p class="text">{{ content.9.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/70.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/70.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.10.uid }}" class="headImg"><img src="{{ content.10.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
-		</div>
-	  </li>
-	</ul>
-  </div>
-
-
-      <div class="main-cont main-user">
-	<div class="main-cont__title">
-	</div>
-      <ul class="main-cont__list clearfix">
-	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/71.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img1.jpeg" alt="#"></a>
-		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
-		</div>
-	  </li>
-	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/72.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
-		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
-		</div>
-	  </li>
-	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/73.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
-		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
-		</div>
-	  </li>
-	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/74.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
-		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
-		</div>
-	  </li>
-	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/75.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
-		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.10.uid }}" class="info-title">{{ content.10.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.10.粉丝数 }}</p>
+		  <p class="text">{{ content.10.微博说明 }}</p>
 		</div>
 	  </li>
 	</ul>
@@ -253,48 +204,101 @@
 	</div>
       <ul class="main-cont__list clearfix">
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/76.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img1.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/71.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.11.uid }}" class="headImg"><img src="{{ content.11.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.11.uid }}" class="info-title">{{ content.11.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.11.粉丝数 }}</p>
+		  <p class="text">{{ content.11.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/77.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img2.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/72.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.12.uid }}" class="headImg"><img src="{{ content.12.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.12.uid }}" class="info-title">{{ content.12.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.12.粉丝数 }}</p>
+		  <p class="text">{{ content.12.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/78.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img3.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/73.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.13.uid }}" class="headImg"><img src="{{ content.13.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.13.uid }}" class="info-title">{{ content.13.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.13.粉丝数 }}</p>
+		  <p class="text">{{ content.13.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/79.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img4.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/74.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.14.uid }}" class="headImg"><img src="{{ content.14.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.14.uid }}" class="info-title">{{ content.14.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.14.粉丝数 }}</p>
+		  <p class="text">{{ content.14.微博说明 }}</p>
 		</div>
 	  </li>
 	  <li class="item">
-		<a href="#" class="pic" style=" background: url(../static/img/cont/80.jpg) no-repeat; background-size: cover; "></a>
-		<a href="#" class="headImg"><img src="../static/img/cont/head_img5.jpeg" alt="#"></a>
+		<a class="pic" style=" background: url(../static/img/cont/75.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.15.uid }}" class="headImg"><img src="{{ content.15.微博头像地址 }}" alt="#"></a>
 		<div class="info">
-		  <a href="#" class="info-title">虽虽酱</a>
-		  <p><i class="icon-star"></i>9645</p>
-		  <p>擅长领域: <b>Q版</b></p>
+		  <a href="/base/{{ content.15.uid }}" class="info-title">{{ content.15.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.15.粉丝数 }}</p>
+		  <p class="text">{{ content.15.微博说明 }}</p>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+      <div class="main-cont main-user">
+	<div class="main-cont__title">
+	</div>
+      <ul class="main-cont__list clearfix">
+	  <li class="item">
+		<a class="pic" style=" background: url(../static/img/cont/76.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.16.uid }}" class="headImg"><img src="{{ content.16.微博头像地址 }}" alt="#"></a>
+		<div class="info">
+		  <a href="/base/{{ content.16.uid }}" class="info-title">{{ content.16.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.16.粉丝数 }}</p>
+		  <p class="text">{{ content.16.微博说明 }}</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a class="pic" style=" background: url(../static/img/cont/77.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.17.uid }}" class="headImg"><img src="{{ content.17.微博头像地址 }}" alt="#"></a>
+		<div class="info">
+		  <a href="/base/{{ content.17.uid }}" class="info-title">{{ content.17.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.17.粉丝数 }}</p>
+		  <p class="text">{{ content.17.微博说明 }}</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a class="pic" style=" background: url(../static/img/cont/78.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.18.uid }}" class="headImg"><img src="{{ content.18.微博头像地址 }}" alt="#"></a>
+		<div class="info">
+		  <a href="/base/{{ content.18.uid }}" class="info-title">{{ content.18.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.18.粉丝数 }}</p>
+		  <p class="text">{{ content.18.微博说明 }}</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a class="pic" style=" background: url(../static/img/cont/79.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.19.uid }}" class="headImg"><img src="{{ content.19.微博头像地址 }}" alt="#"></a>
+		<div class="info">
+		  <a href="/base/{{ content.19.uid }}" class="info-title">{{ content.19.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.19.粉丝数 }}</p>
+		  <p class="text">{{ content.19.微博说明 }}</p>
+		</div>
+	  </li>
+	  <li class="item">
+		<a class="pic" style=" background: url(../static/img/cont/80.jpg) no-repeat; background-size: cover; "></a>
+		<a href="/base/{{ content.20.uid }}" class="headImg"><img src="{{ content.20.微博头像地址 }}" alt="#"></a>
+		<div class="info">
+		  <a href="/base/{{ content.20.uid }}" class="info-title">{{ content.20.粉丝数 }}</a>
+		  <p><i class="icon-star"></i>{{ content.20.粉丝数 }}</p>
+		  <p class="text">{{ content.20.微博说明 }}</p>
 		</div>
 	  </li>
 	</ul>
@@ -328,7 +332,7 @@
 	  <div class="footer-orcode"><img src="../static/img/app_qrcode.png" alt="#"></div>
 	  <div class="orcode-text">
 		<p>扫描二维码</p>
-		<p>下载tang手机客户端</p>
+		<p>手机浏览本站</p>
 	  </div>
 	</div>
 	<div class="footer-link__item">
@@ -349,9 +353,11 @@
 	</div>
   </div>
   <div class="fopter-copyright">
-	<p>Copyright &copy; 2019.Company name All rights reserved.</p>
+	<p>鄂ICP备19006923号<br>
+	Copyright &copy; 2019.Company name All rights reserved.</p>
   </div>
 </div>
 </footer>
+<div class="logon_id" style="display: none">{{ content.login_id }}</div>
 </body>
 </html>

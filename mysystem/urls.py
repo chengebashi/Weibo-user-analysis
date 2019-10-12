@@ -20,10 +20,16 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('login', views.login),
+    path('logout',views.logout),
+    path('index',views.qq_check),
     path('base/<user_id>',views.base),
+    path('self_like/<open_id>', views.self_like),
     path('entertainment',views.entertainment, name='entertainment'),
     path('music',views.music, name='music'),
     path('sport',views.sport, name='sport'),
     path('game',views.game, name='game'),
-    path('active',views.active, name='active')
+    path('active',views.active, name='active'),
+    path('user_search',views.user_search),
+    path('collection', views.collection)
 ]

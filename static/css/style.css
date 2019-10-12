@@ -6,7 +6,7 @@ body {
 
 .liker {
   position: fixed;
-  top: 410px;
+  bottom: 15%;
   left: 93%;
   transform: translate(-50%, 0%);
 }

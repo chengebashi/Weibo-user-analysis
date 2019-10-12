@@ -67,18 +67,18 @@ span{
 
 .hot{
     clear:both;
-    margin: 0 auto;
-    width:80%;
-    height: 600px;
+    /*margin: 0 auto;*/
+    width:600px;
+    height: 450px;
 }
 .paimin li{
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     font-size: 18px;
 }
 .word_cloud{
     margin: 0;
     /*width:50%;*/
-    height: 500px;
+    height: 580px;
 }
 .bottom li{
     display: inline-block;

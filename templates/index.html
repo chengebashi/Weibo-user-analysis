@@ -7,6 +7,7 @@
     <link rel="icon" href="../static/img/favicon.ico">
     <link rel="stylesheet" href="../static/css/reset.css">
     <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.css"> <!--字体-->
     <script src="../static/js/jquery-3.4.1.min.js"></script>
     <script src="../static/js/script.js"></script>
     <script src="../static/js/su.js"></script>
@@ -30,8 +31,11 @@
 <div class="header-inner body-width">
   <a class="logo"></a>
   <div class="search">
-	<input type="text" class="search-text" placeholder="搜索用户">
-	<button class="search-btn"><i class="icon-search"></i></button>
+      <form action="/user_search" method="post">
+          {% csrf_token %}
+	<input type="text" class="search-text" placeholder="搜索用户" name="search">
+	<button type="submit" class="search-btn"><i class="icon-search"></i></button>
+      </form>
   </div>
   <nav class="header-nav">
 	<ul>
@@ -61,22 +65,22 @@
 	  </li>
 	  <li>
 		<span class="line"></span>
-		<a href="#" class="dreamer">收 藏</a>
+		<a href="/self_like/{{ login_id }}" class="dreamer">收 藏</a>
 	  </li>
 	  <li>
-		<span class="line"></span>
-		<a href="#">登 录</a>
-	  </li>
-{#	  <li>#}
-{#		<span class="line"></span>#}
-{#		<i class="icon-app"></i>#}
-{#		<a href="#" class="app">手机版</a>#}
-{#		<i class="icon-arrow"></i>#}
-{#		<div class="app-hover">#}
-{#		  <a href="#"></a>#}
-{#		  <p>扫一扫下载手机客户端</p>#}
-{#		</div>#}
-{#	  </li>#}
+          {% if head_img %}
+          <div class="text_top" style="display: flex;">
+                <span class="line"></span>
+                  <span class="the_qq_head">
+                <img style="border-radius: 50%; height: 40px;width: 40px" src="{{ head_img }}">
+                </span>
+                <span class="the_qq_name">{{ nick_name }}</span>
+                <span style="display: inline-block" class="logout"><a class="fa fa-sign-out" aria-hidden="true"></a></span>
+              </div>
+          {% else %}
+                <span style="margin-left: 50px;" class="qq"><img id="qq_login" style="width: 40px;height: 40px;position: absolute;top: -4px;" src="../static/img/icon_QQ.png"></span>
+          {% endif %}
+      </li>
 	</ul>
   </nav>
 </div>
@@ -139,11 +143,11 @@
 			<span></span>
 		  </li>
 		  <li class="choose">
-			<a href="#">『人气连衣裙精选』 大合集</a>
-			<span class="icon-text__pink">精选</span>
+			<a style="font-size: 18px;font-family: youyuan;">愿你不被沉寂在深巷，有梦就在不远方....</a>
+			<span class="icon-text__pink">心语</span>
 		  </li>
 		  <li class="assistant">
-			<p>收图小助手:  <a href="#">tang收集工具</a></p>
+			<p>&nbsp&nbsp&nbsp&nbsp人生如烟花,不可能永远悬挂天际,没有人是完美的,顺其自然,别轻易埋怨,世间清浊不由你；众人醉醒由他去。任何时候,别以为自己是谁,别把自己当成谁,你就是你。</p>
 		  </li>
 		</ul>
 	  </div>
@@ -495,7 +499,7 @@
 	  <div class="footer-orcode"><img src="../static/img/app_qrcode.png" alt="#"></div>
 	  <div class="orcode-text">
 		<p>扫描二维码</p>
-		<p>下载tang手机客户端</p>
+		<p>手机浏览本站</p>
 	  </div>
 	</div>
 	<div class="footer-link__item">
@@ -516,9 +520,11 @@
 	</div>
   </div>
   <div class="fopter-copyright">
-	<p>Copyright &copy; 2019.Company name All rights reserved.</p>
+	<p>鄂ICP备19006923号<br>
+	Copyright &copy; 2019.Company name All rights reserved.</p>
   </div>
 </div>
 </footer>
+<div class="logon_id" style="display: none">{{ login_id }}</div>
 </body>
 </html>

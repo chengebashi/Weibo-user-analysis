@@ -32,10 +32,13 @@
 
 <header class="header">
 <div class="header-inner body-width">
-  <a href="#" class="logo"></a>
+  <a class="logo"></a>
   <div class="search">
-	<input type="text" class="search-text" placeholder="搜索用户">
-	<button class="search-btn"><i class="icon-search"></i></button>
+      <form action="/user_search" method="post">
+          {% csrf_token %}
+	<input type="text" class="search-text" placeholder="搜索用户" name="search">
+	<button type="submit" class="search-btn"><i class="icon-search"></i></button>
+      </form>
   </div>
   <nav class="header-nav">
 	<ul>
@@ -43,34 +46,44 @@
             <a href="/" class="dreamer">首 页</a>
 		<!--<i class="icon-text__pink icon-new">new</i>-->
         </li>
-	   <li>
+	  <li>
 		<span class="line"></span>
-          <a href="{%  url 'entertainment' %}" class="dreamer" id="faction">娱 乐</a>
+          <a href="/entertainment" class="dreamer" id="faction">娱 乐</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'music' %}" class="dreamer" id="faction">音 乐</a>
+          <a href="/music" class="dreamer" id="faction">音 乐</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'sport' %}" class="dreamer" id="faction">体 育</a>
+          <a href="/sport" class="dreamer" id="faction">体 育</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'game' %}" class="dreamer" id="faction">游 戏</a>
+          <a href="/game" class="dreamer" id="faction">游 戏</a>
 	  </li>
         <li>
 		<span class="line"></span>
-          <a href="{%  url 'active' %}" class="dreamer" id="faction">达 人</a>
+          <a href="/active" class="dreamer" id="faction">达 人</a>
 	  </li>
 	  <li>
 		<span class="line"></span>
-		<a href="#" class="dreamer">收 藏</a>
+		<a href="/self_like/{{ data.login_id }}" class="dreamer">收 藏</a>
 	  </li>
 	  <li>
-		<span class="line"></span>
-		<a href="#">登 录</a>
-	  </li>
+          {% if data.head_img %}
+          <div class="text_top" style="display: flex;">
+                <span class="line"></span>
+                  <span class="the_qq_head">
+                <img style="border-radius: 50%; height: 40px;width: 40px" src="{{ data.head_img }}">
+                </span>
+                <span class="the_qq_name">{{ data.nick_name }}</span>
+                <span style="display: inline-block" class="logout"><a class="fa fa-sign-out" aria-hidden="true"></a></span>
+              </div>
+          {% else %}
+                <span style="margin-left: 50px;" class="qq"><img id="qq_login" style="width: 40px;height: 40px;position: absolute;top: -4px;" src="../static/img/icon_QQ.png"></span>
+          {% endif %}
+      </li>
 	</ul>
   </nav>
 </div>
@@ -80,40 +93,66 @@
 <div class="main">
     <div class="main-inner body-width">
         <div id="head_one" style="width: 100%">
-            <img id="head_img" src="https://tva3.sinaimg.cn/crop.0.0.180.180.180/68160971jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1570427992&ssig=t9MiQMVsie">
+            <img id="head_img" src="{{ data.微博头像地址 }}">
         </div>
-        <div>
-            <p class="name">微博昵称：{{ data.name }}</p>
+        <div class="weibo_nick_name">
+            <p class="name">微博昵称：{{ data.微博昵称 }}</p>
 
         </div>
         <div class="the_person">
             <div style="margin: 0 154px 60px 276px;">
-            <a class="fa fa-home" aria-hidden="true" title="微博主页"></a>
-{#            <a class="fa fa-female" aria-hidden="true" title="性别"></a>#}
+            <a target="_blank" href="{{ data.微博主页地址 }}" class="fa fa-home" aria-hidden="true" title="微博主页"></a>
+                {% if data.性别 == 'm' %}
+                    <a  id="sex" class="fa fa-male" aria-hidden="true" title="性别"></a>
+                    {% else %}
+                    <a id="sex" class="fa fa-female" aria-hidden="true" title="性别"></a>
 
-            <a id="sex" class="fa fa-male" aria-hidden="true" title="性别"></a>
+                {% endif %}
             <a id="note" class="fa fa-pencil-square-o" aria-hidden="true" title="个人说明"></a>
             <a id="tag" class="fa fa-tags" aria-hidden="true" title="标签"></a>
-            <a id="like" class="fa fa-star" aria-hidden="true" title="收藏"></a>
+            <a class="fa fa-star" aria-hidden="true" title="收藏"></a>
             </div>
             <div id="sex_tip" style="margin-bottom: 30px;">
-                <p>该 博 主 是 个 妹 子</p>
+                {% if data.性别 == 'm' %}
+                    <p>该 博 主 是 个 帅 哥</p>
+                    {% else %}
+                    <p>该 博 主 是 个 妹 子</p>
+                {% endif %}
             </div>
             <div id="note_tip" style="margin-bottom: 30px;">
-                <p>个人说明:</p>
+                {% if data.微博说明 %}
+                <p>个人说明:{{ data.微博说明 }}</p>
+                    {% else %}
+                    <p>个人说明:微博主人很懒，啥都没写...</p>
+                {% endif %}
             </div>
             <div id="tags_tip" style="margin-bottom: 30px;">
-                <p>标签:<span>活泼</span>&nbsp<span></span>&nbsp<span></span></p>
+
+                <p>
+                标签:
+                    {% for i in data.标签 %}
+                    <span>{{ i }}</span>
+                    {% endfor %}
+                </p>
+
             </div>
         </div>
-        <div class="faction" style="width: 600px;height:400px;float: left">
+        <div class="faction" style="width: 600px;height:400px;float: left;margin-left: 70px;">
         <script type="text/javascript">
         var myChart = echarts.init(document.querySelector('.faction'));
         var content = {{ data|safe }};
-        console.log(content.name,'name');
-            myChart.setOption({
-                    title : {
-        text: '原创微博分类明细',
+        var long = content['高频词汇'];
+        var name_word = [];
+        var name_value = [];
+        for (var i in long){
+            name_word.push(i);
+            name_value.push(long[i]);
+            {#console.log(name_word[0],'0')#}
+        }
+            myChart.setOption(
+                option = {
+    title : {
+        text: '原创微博分类',
         {#subtext: '纯属虚构',#}
         x:'center'
     },
@@ -124,21 +163,28 @@
     legend: {
         orient: 'vertical',
         left: 'left',
-        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        {#data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']#}
+        data: content.keys
     },
     series : [
         {
-            name: '访问来源',
+            name: '关键字',
             type: 'pie',
             radius : '55%',
             center: ['50%', '60%'],
-            data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
+                data:[
+                {value:name_value[0], name:name_word[0]},
+                {value:name_value[1], name:name_word[1]},
+                {value:name_value[2], name:name_word[2]},
+                {value:name_value[3], name:name_word[3]},
+                {value:name_value[4], name:name_word[4]},
+                {value:name_value[5], name:name_word[5]},
+                {value:name_value[6], name:name_word[6]},
+                {value:name_value[7], name:name_word[7]},
+                {value:name_value[8], name:name_word[8]},
+                {value:name_value[9], name:name_word[9]}
             ],
+
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
@@ -148,31 +194,54 @@
             }
         }
     ]
-            });
+});
 
         // 使用刚指定的配置项和数据显示图表。
     </script>
         </div>
-        <div class="list" style="float: right;width: 500px;height: 400px">
-            <div style="font-size: 19px;text-align: center;margin-bottom: 9px;"><p>热度排名前十微博</p></div>
+        <div class="list" style="float: right;width: 500px;height: 400px;margin-right: 30px;margin-bottom: 80px">
+            <div style="font-size: 19px;text-align: center;margin-bottom: 9px;"><p style="margin-bottom: 25px;">热度排名前十微博</p></div>
             <ul class="paimin" style="margin: 0;padding: 0;">
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">1</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">2</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">3</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">4</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">5</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">6</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">7</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">8</span><a style="color: #22b4f6">你好</a></li>
-                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">9</span><a style="color: #22b4f6">你好</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">1</span><a target="_blank" href="{{  data.点赞前十微博内容.1.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.1.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">2</span><a target="_blank" href="{{  data.点赞前十微博内容.2.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.2.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">3</span><a target="_blank" href="{{  data.点赞前十微博内容.3.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.3.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">4</span><a target="_blank" href="{{  data.点赞前十微博内容.4.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.4.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">5</span><a target="_blank" href="{{  data.点赞前十微博内容.5.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.5.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">6</span><a target="_blank" href="{{  data.点赞前十微博内容.6.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.6.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">7</span><a target="_blank" href="{{  data.点赞前十微博内容.7.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.7.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">8</span><a target="_blank" href="{{  data.点赞前十微博内容.8.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.8.微博内容 }}</a></li>
+                <li><span style="display:inline-block;text-align:center;border-radius: 100%;margin: 0 5px 0 0;background-color: #dd22f629;width: 20px;font-size: 20px;">9</span><a target="_blank" href="{{  data.点赞前十微博内容.9.微博地址  }}" style="color: #22b4f6">{{ data.点赞前十微博内容.9.微博内容 }}</a></li>
             </ul>
         </div>
-        <div class="hot" style="margin-bottom: 50px;">
+
+        <div style="width: 100%;clear: both;margin-bottom: 80px">
+            <p style="text-align: center"><i id="down_1" style="font-size: 76px;" class="fa fa-arrow-down" aria-hidden="true"></i></p>
+        </div>
+
+
+        <div class="hot" style="margin-bottom: 50px;float: left;">
             <script type="text/javascript">
                 var myChart_2 = echarts.init(document.querySelector('.hot'));
+                var data = {{ data|safe }};
+                var time_value = [];
+                var hot = data['每月点赞数'];
+                var the_month = [];
+                for (var i in hot)
+                {
+                    {#console.log(i, 'i');#}
+                    time_value.push(hot[i]);
+                    {#i = i.slice(8);#}
+                    the_month.push(i);
+                    {#console.log(hot[i], 'hot')#}
+                }
+                console.log(time_value, 'time_value');
+                console.log(the_month, 'the_month');
                 myChart_2.setOption(
                 option = {
-                    color: ['#3398DB'],
+                    title: {
+                        text: '微博每月热度',
+                    },
+                    color: ['#db0f19'],
                     tooltip : {
                         trigger: 'axis',
                         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -188,7 +257,7 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            data : the_month,
                             axisTick: {
                                 alignWithLabel: true
                             }
@@ -201,24 +270,37 @@
                     ],
                     series : [
                         {
-                            name:'直接访问',
+                            name:'当月热度',
                             type:'bar',
                             barWidth: '60%',
-                            data:[10, 52, 200, 334, 390, 330, 220]
+                            data:time_value
                         }
                     ]
                 });
             </script>
         </div>
-        <div class="word_cloud">
-            <p style="font-size: 30px;">最近微博话题</p>
-            <div style="margin: 0 auto;float: left">
-                <img src="../static/img/未标题-1.png">
+        <div id="care">
+            <P style="float: right;width: 50%;font-size: 26px;text-align: center;font-family: YouYuan;margin-bottom: 25px;">
+                他/她的关注
+            </P>
+                {% for i in data.ta的关注.values %}
+                <span style="display: inline-block;font-size: 30px;margin-bottom: 20px;margin-right: 10px">{{ i }}</span>
+                {% endfor %}
+        </div>
+        <div style="width: 100%;clear: both;margin-bottom: 80px">
+            <p style="text-align: center"><i id="down_2" style="font-size: 76px;" class="fa fa-arrow-down" aria-hidden="true"></i></p>
+        </div>
+        <div class="word_cloud" style="clear: both;background-color: #FFFFFF;border-radius: 50px;">
+            <p style="font-size: 30px;margin-bottom: 50px;text-align: center;">最近微博话题</p>
+            <div style="margin: 0 auto;width: 560px;background-color: #FFFFFF;">
+                <img src="../static/img/uid_png/{{ data.picture_path }}">
             </div>
         </div>
     </div>
 </div>
-
+    <div style="position: fixed;bottom: 6%;right: 12%">
+        <img id="top" style="width: 100px" src="../static/img/top.png">
+    </div>
 
 <footer class="footer">
 <div class="footer-container">
@@ -243,7 +325,7 @@
 	  <div class="footer-orcode"><img src="../static/img/app_qrcode.png" alt="#"></div>
 	  <div class="orcode-text">
 		<p>扫描二维码</p>
-		<p>下载tang手机客户端</p>
+		<p>手机浏览本站</p>
 	  </div>
 	</div>
 	<div class="footer-link__item">
@@ -264,7 +346,8 @@
 	</div>
   </div>
   <div class="fopter-copyright">
-	<p>Copyright &copy; 2019.Company name All rights reserved.</p>
+	<p>鄂ICP备19006923号<br>
+	Copyright &copy; 2019.Company name All rights reserved.</p>
   </div>
 </div>
 </footer>
@@ -434,5 +517,7 @@ btn.addEventListener('click', function () {
 });
     </script>
 </div>
+{#<div class="logon_id" style="display: none">{{ data.login_id }}</div>#}
+<div class="logon_id" style="display: none">{{ data.login_id }}</div>
 </body>
 </html>

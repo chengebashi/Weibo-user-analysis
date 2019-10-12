@@ -1,6 +1,8 @@
 /* ====== general ====== */
 p{
     cursor:default;
+    font-size: 15px;
+    font-family: YouYuan;
 }
 .clearfix {
   zoom: 1;
@@ -203,7 +205,7 @@ body {
 }
 .header-nav li .line {
   display: inline-block;
-  margin: 0 16px;
+  margin: 0 10px;
   width: 1px;
   height: 24px;
   background-color: #ebebeb;
@@ -223,7 +225,7 @@ body {
   width: 11px;
   height: 30px;
   margin-right: 5px;
-  background: url(../img/icon_app.png) no-repeat left center;
+  /*background: url(../img/icon_app.png) no-repeat left center;*/
   vertical-align: top;
 }
 .header-nav li .icon-arrow {
@@ -380,7 +382,7 @@ body {
 .banner-info .news li.choose,
 .banner-info .news li.assistant {
   height: 50px;
-  line-height: 50px;
+  line-height: 32px;
   border-bottom: 1px solid #ebebeb;
 }
 .banner-info .news li.title {
@@ -429,7 +431,7 @@ body {
 .banner-info .app a {
   width: 466px;
   height: 130px;
-  background: url(../img/cont/banner_info.jpg) no-repeat center;
+  background: url(../img/index_2.jpg) no-repeat center;
 }
 /* ====== 内容列表 ====== */
 .main-cont__title {
@@ -857,4 +859,62 @@ body {
 
 .more{
   cursor:pointer;
+}
+
+.list a{
+    width: 475px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+#down_1:hover{
+}
+
+#care span{
+    padding: 5px;
+    background-color: #eacfc573;
+    border-radius: 10px
+}
+
+.text{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    width: 90%;
+    margin: 0 auto
+}
+#note_tip p{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    width: 80%;
+    margin: 0 auto
+}
+.the_qq_head{
+    position: absolute;
+    left:30px;
+    z-index: 10000000;
+    top: -4px;
+}
+.the_qq_name{
+    position: absolute;
+    left:80px;
+    z-index: 10000000;
+    width: 100px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.logout{
+    position: absolute;
+    left:185px;
+    z-index: 10000000;
+    top:3px
+}
+.logout a{
+    font-size: 25px;
+}
+.link a:hover{
+    color: orangered;
 }

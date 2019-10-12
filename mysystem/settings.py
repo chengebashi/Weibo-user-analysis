@@ -121,3 +121,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')       #通过和项目根路径拼接得到static的路径
 ]
+
+QQ_APP_ID = '101807172'
+QQ_KEY = '87abf1a40dff2a7663ee818161a86ad8'
+QQ_RECALL_URL = 'http://chenge.online/index'
+
